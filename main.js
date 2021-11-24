@@ -31,48 +31,6 @@ function evaluateInput(){
         secondNumber = parseInt(document.querySelector("#secondNumber").value);
     }
 }
-function add(){
-    operator ="+";
-    evaluateInput();
-    addCounter++;
-    result = firstNumber + secondNumber;
-    resultArray.push({ num1: firstNumber , op: operator , num2: secondNumber , answer: " = " + result})
-    printHistory();
-    updateStatistics();
-}
-function sub(){
-    operator = "-"
-    evaluateInput()
-    subCounter++;
-    result = firstNumber - secondNumber;
-
-    resultArray.push({ num1: firstNumber , op: operator , num2: secondNumber , answer: " = " + result})
-    printHistory();
-    updateStatistics();
-}
-function mult(){
-    operator= "*"
-    multCounter++;
-    evaluateInput()
-    result = firstNumber * secondNumber;
-    resultArray.push({ num1: firstNumber , op: operator , num2: secondNumber , answer: " = " + result})
-    printHistory();
-    updateStatistics();
-}
-function div(){
-    operator="/";
-    divCounter++;
-    evaluateInput();
-    if(secondNumber == 0){
-        alert("Kan inte dividera med noll, skriv ett annat andra tal!")
-        return;
-    }
-    result = firstNumber / secondNumber;
-
-    resultArray.push({ num1: firstNumber , op: operator , num2: secondNumber , answer: " = " + result})
-    printHistory();
-    updateStatistics();
-}
 function printHistory(){
     document.querySelector("p").innerText = "";
     for(i=0; i < resultArray.length;i++){
@@ -105,5 +63,44 @@ function updateStatistics(){
     document.querySelector("#divCounter").innerText = "Antalet divisioner " + divCounter;
 }
 function calculate(operator){
-    
+    switch(resultArray[i].op){
+        case "+":
+            operator ="+";
+    evaluateInput();
+    addCounter++;
+    result = firstNumber + secondNumber;
+    resultArray.push({ num1: firstNumber , op: operator , num2: secondNumber , answer: " = " + result})
+    printHistory();
+    updateStatistics();
+        case "-":
+            operator = "-"
+    evaluateInput()
+    subCounter++;
+    result = firstNumber - secondNumber;
+
+    resultArray.push({ num1: firstNumber , op: operator , num2: secondNumber , answer: " = " + result})
+    printHistory();
+    updateStatistics();
+        case "*":
+            operator= "*"
+            multCounter++;
+            evaluateInput()
+            result = firstNumber * secondNumber;
+            resultArray.push({ num1: firstNumber , op: operator , num2: secondNumber , answer: " = " + result})
+            printHistory();
+            updateStatistics();
+        case "/":
+            operator="/";
+            divCounter++;
+            evaluateInput();
+            if(secondNumber == 0){
+                alert("Kan inte dividera med noll, skriv ett annat andra tal!")
+                return;
+            }
+            result = firstNumber / secondNumber;
+        
+            resultArray.push({ num1: firstNumber , op: operator , num2: secondNumber , answer: " = " + result})
+            printHistory();
+            updateStatistics();
+    }
 }
