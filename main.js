@@ -7,8 +7,7 @@ let historyString;
 let checkFirstnumber = false;
 let checkSecondNumber = false;
 
-function add(){
-    operator ="+";
+function evaluateInput(){
     checkFirstnumber = checkForMarcus(document.querySelector("#firstNumber").value);
     checkSecondNumber = checkForMarcus(document.querySelector("#secondNumber").value);
     if(checkFirstnumber && checkSecondNumber){
@@ -27,6 +26,10 @@ function add(){
         firstNumber = parseInt(document.querySelector("#firstNumber").value);
         secondNumber = parseInt(document.querySelector("#secondNumber").value);
     }
+}
+function add(){
+    operator ="+";
+    evaluateInput()
    
    
     result = firstNumber + secondNumber;
@@ -36,8 +39,8 @@ function add(){
 }
 function sub(){
     operator = "-"
-    firstNumber = document.querySelector("#firstNumber").value;
-    secondNumber = document.querySelector("#secondNumber").value;
+    evaluateInput()
+    
     result = firstNumber - secondNumber;
 
     resultArray.push({ num1: firstNumber , op: operator , num2: secondNumber , answer: " = " + result})
@@ -45,16 +48,14 @@ function sub(){
 }
 function mult(){
     operator= "*"
-    firstNumber = document.querySelector("#firstNumber").value;
-    secondNumber = document.querySelector("#secondNumber").value;
+    evaluateInput()
     result = firstNumber * secondNumber;
     resultArray.push({ num1: firstNumber , op: operator , num2: secondNumber , answer: " = " + result})
     printHistory();
 }
 function div(){
     operator="/";
-    firstNumber = document.querySelector("#firstNumber").value;
-    secondNumber = document.querySelector("#secondNumber").value;
+    evaluateInput();
     if(secondNumber == 0){
         alert("Kan inte dividera med noll, skriv ett annat andra tal!")
         return;
