@@ -11,15 +11,19 @@
         <h1>Kalkylator</h1>
     </div>
     <div>
-        <label for="firstNumber"></label>
-        <input type="number" id="firstNumber" placeholder="Ange första talet">
-        <label for="secondNumber"></label>
-        <input type="number" id="secondNumber" placeholder="Ange andra talet">
-        <br>
-        <button id="add" onclick="add()">Addera</button>
-        <button id="sub" onclick="sub()">Subtrahera</button>
-        <button id="mult" onclick="mult()">Multiplicera</button>
-        <button id="div" onclick="div()" >Dividera</button>
+        <form>
+            <label for="firstNumber"></label>
+            <input type="text" id="firstNumber" placeholder="Ange första talet" name="firstNumber" required>
+            <label for="secondNumber"></label>
+            <input type="text" id="secondNumber" placeholder="Ange andra talet" required>
+            <br>
+            <button id="add" onclick="add()">Addera</button>
+            <button id="sub" onclick="sub()">Subtrahera</button>
+            <button id="mult" onclick="mult()">Multiplicera</button>
+            <button id="div" onclick="div()" >Dividera</button>
+        </form>
+       
+       
     </div>
     <div>
         <h2>Historik</h2>
