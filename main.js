@@ -4,11 +4,31 @@ let operator;
 let result;
 let resultArray = [];
 let historyString;
+let checkFirstnumber = false;
+let checkSecondNumber = false;
 
 function add(){
     operator ="+";
-    firstNumber = parseInt(document.querySelector("#firstNumber").value);
-    secondNumber = parseInt(document.querySelector("#secondNumber").value);
+    checkFirstnumber = checkForMarcus(document.querySelector("#firstNumber").value);
+    checkSecondNumber = checkForMarcus(document.querySelector("#secondNumber").value);
+    if(checkFirstnumber && checkSecondNumber){
+        firstNumber = 42;
+        secondNumber = 42;
+    }
+    else if(checkFirstnumber){
+        firstNumber = 42;
+        secondNumber = parseInt(document.querySelector("#secondNumber").value);
+    }
+    else if(checkSecondNumber){
+        firstNumber = parseInt(document.querySelector("#firstNumber").value);
+        secondNumber = 42;
+    }
+    else{
+        firstNumber = parseInt(document.querySelector("#firstNumber").value);
+        secondNumber = parseInt(document.querySelector("#secondNumber").value);
+    }
+   
+   
     result = firstNumber + secondNumber;
     resultArray.push({ num1: firstNumber , op: operator , num2: secondNumber , answer: " = " + result})
     printHistory();
@@ -49,5 +69,10 @@ function printHistory(){
     for(i=0; i < resultArray.length;i++){
         document.querySelector("p").innerText += resultArray[i].num1 + " " + resultArray[i].op + " " +
          resultArray[i].num2 + " = " + resultArray[i].answer +"\n";
+    }
+}
+function checkForMarcus(input){
+    if(input == "marcus"){
+        return true;
     }
 }
