@@ -6,6 +6,10 @@ let resultArray = [];
 let historyString;
 let checkFirstnumber = false;
 let checkSecondNumber = false;
+let subCounter = 0;
+let addCounter = 0;
+let multCounter = 0;
+let divCounter = 0;
 
 function evaluateInput(){
     checkFirstnumber = checkForMarcus(document.querySelector("#firstNumber").value);
@@ -29,32 +33,35 @@ function evaluateInput(){
 }
 function add(){
     operator ="+";
-    evaluateInput()
-   
-   
+    evaluateInput();
+    addCounter++;
     result = firstNumber + secondNumber;
     resultArray.push({ num1: firstNumber , op: operator , num2: secondNumber , answer: " = " + result})
     printHistory();
-    
+    updateStatistics();
 }
 function sub(){
     operator = "-"
     evaluateInput()
-    
+    subCounter++;
     result = firstNumber - secondNumber;
 
     resultArray.push({ num1: firstNumber , op: operator , num2: secondNumber , answer: " = " + result})
     printHistory();
+    updateStatistics();
 }
 function mult(){
     operator= "*"
+    multCounter++;
     evaluateInput()
     result = firstNumber * secondNumber;
     resultArray.push({ num1: firstNumber , op: operator , num2: secondNumber , answer: " = " + result})
     printHistory();
+    updateStatistics();
 }
 function div(){
     operator="/";
+    divCounter++;
     evaluateInput();
     if(secondNumber == 0){
         alert("Kan inte dividera med noll, skriv ett annat andra tal!")
@@ -64,6 +71,7 @@ function div(){
 
     resultArray.push({ num1: firstNumber , op: operator , num2: secondNumber , answer: " = " + result})
     printHistory();
+    updateStatistics();
 }
 function printHistory(){
     document.querySelector("p").innerText = "";
@@ -76,4 +84,26 @@ function checkForMarcus(input){
     if(input == "marcus"){
         return true;
     }
+}
+function updateStatistics(){
+    /*
+    for(i=0; i<resultArray.length; i++){
+        switch(resultArray[i].op){
+            case "+":
+                addCounter++;
+            case "-":
+                subCounter++;
+            case "*":
+                multCounter++;
+            case "/":
+                divCounter++;
+        }
+    }*/
+    document.querySelector("#addCounter").innerText = "Antalet additioner " + addCounter ;
+    document.querySelector("#subCounter").innerText = "Antalet subtraktioner " + subCounter;
+    document.querySelector("#multCounter").innerText = "Antalet multiplikationer " + multCounter;
+    document.querySelector("#divCounter").innerText = "Antalet divisioner " + divCounter;
+}
+function calculate(operator){
+    
 }
